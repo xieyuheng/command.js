@@ -24,16 +24,15 @@ export function matchPattern(
     }
 
     const nextToken = tokens.shift()
-    if (nextToken === undefined )  {
-      options[token]= ""
+    if (nextToken === undefined) {
+      options[token] = ""
     } else if (nextToken.startsWith("-")) {
       tokens.unshift(nextToken)
-      options[token]= ""
+      options[token] = ""
     } else {
-      options[token]= nextToken
+      options[token] = nextToken
     }
   }
-
 
   return [args, options]
 }
