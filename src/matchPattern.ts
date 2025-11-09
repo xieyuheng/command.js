@@ -22,22 +22,16 @@ export function matchPattern(
 
   while (tokens.length > 0) {
     const token = tokens.shift() as string
-    if (!pattern.optionNames.includes(token)) {
-      let message = `[CommandRouter] ${pattern.spec}`
-      message += `\n  input tokens: ${inputTokens.join(" ")}`
-      message += `\n  unexpected token: ${token}`
-      console.log(message)
-      process.exit(1)
-    }
-
-    const nextToken = tokens.shift()
-    if (nextToken === undefined) {
-      options[token] = ""
-    } else if (nextToken.startsWith("-")) {
-      tokens.unshift(nextToken)
-      options[token] = ""
-    } else {
-      options[token] = nextToken
+    if (pattern.optionNames.includes(token)) {
+      const nextToken = tokens.shift()
+      if (nextToken === undefined) {
+        options[token] = ""
+      } else if (nextToken.startsWith("-")) {
+        tokens.unshift(nextToken)
+        options[token] = ""
+      } else {
+        options[token] = nextToken
+      }
     }
   }
 
