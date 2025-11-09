@@ -1,9 +1,9 @@
 {
-  "name": "@xieyuheng/commander.js",
+  "name": "@xieyuheng/command-router.js",
   "version": "0.1.5",
   "license": "GPL-3.0-or-later",
   "type": "module",
-  "repository": "github:xieyuheng/commander.js",
+  "repository": "github:xieyuheng/command-router.js",
   "main": "lib/index.js",
   "files": [
     "src",
