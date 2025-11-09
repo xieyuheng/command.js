@@ -1,5 +1,18 @@
 #!/usr/bin/env -S node
 
-import { commander } from "./example-commander.ts"
+import { CommandRouter, type CommandHandlers } from "./index.ts"
 
-commander.run(process.argv)
+const router = new CommandRouter()
+
+const routes = {
+  add: "x y -- add two numbers",
+  mul: "x y -- mul two numbers",
+}
+
+const handlers: CommandHandlers = {
+  add: ([x, y]) => console.log(Number(x) + Number(y)),
+  mul: ([x, y]) => console.log(Number(x) * Number(y)),
+}
+
+router.bind(routes, handlers)
+router.run(process.argv)

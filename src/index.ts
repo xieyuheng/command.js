@@ -1,1 +1,1 @@
-export * from "./commander/index.ts"
+export * from "./CommandRouter.ts"

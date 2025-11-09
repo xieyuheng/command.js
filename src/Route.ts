@@ -1,4 +1,4 @@
-export type Pattern = {
+export type Route = {
   parameters: Array<string>
   optionalParameters: Array<string>
   options: Record<string, string>
