@@ -1,3 +1,5 @@
-`ArgumentPattern`
 `parseArgumentPattern`
-`dispatchCommand(command, routes, handlers)`
+
+`CommandRouter` -- setup class
+`CommandRouter.bind(routes, handlers)()`
+`CommandRouter.run(command)`
