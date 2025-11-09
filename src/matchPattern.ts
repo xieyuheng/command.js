@@ -13,7 +13,8 @@ export function matchPattern(
       let message = `[CommandRouter] ${pattern.spec}`
       message += `\n  input tokens: ${inputTokens.join(" ")}`
       message += `\n  missing argument: ${argName}`
-      throw new Error(message)
+      console.log(message)
+      process.exit(1)
     }
 
     args.push(token)
@@ -25,7 +26,8 @@ export function matchPattern(
       let message = `[CommandRouter] ${pattern.spec}`
       message += `\n  input tokens: ${inputTokens.join(" ")}`
       message += `\n  unexpected token: ${token}`
-      throw new Error(message)
+      console.log(message)
+      process.exit(1)
     }
 
     const nextToken = tokens.shift()
