@@ -1,4 +1,4 @@
-export type ArgumentPattern = {
+export type Pattern = {
   parameters: Array<string>
   optionalParameters: Array<string>
   options: Record<string, string>

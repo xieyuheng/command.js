@@ -1,4 +1,4 @@
-`parseArgumentPattern`
+`parsePattern`
 
 `CommandRouter` -- setup class
 `CommandRouter.bind(routes, handlers)()`
