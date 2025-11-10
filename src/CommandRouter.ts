@@ -1,6 +1,6 @@
 import type { MaybePromise } from "./helpers/promise/index.ts"
 import { recordMapValue } from "./helpers/record/recordMapValue.ts"
-import { setEqual } from "./helpers/set/setAlgebra.ts"
+import { setDifference } from "./helpers/set/setAlgebra.ts"
 import { matchPattern } from "./matchPattern.ts"
 import { parsePattern } from "./parsePattern.ts"
 import { type Pattern } from "./Pattern.ts"
@@ -74,10 +74,20 @@ function checkHandlers(
 ): void {
   const specNames = Object.keys(specs)
   const handlerNames = Object.keys(handlers)
-  if (!setEqual(new Set(specNames), new Set(handlerNames))) {
+  const missingHandlerNames = Array.from(setDifference(
+    new Set(specNames),
+    new Set(handlerNames),
+  ))
+  const missingSpecNames = Array.from(setDifference(
+    new Set(handlerNames),
+    new Set(specNames),
+  ))
+  if (missingHandlerNames.length !== 0 || missingSpecNames.length !== 0) {
     let message = `[CommandRouter.bind] handler mismatch`
-    message += `\n  command spec names: ${specNames.join(" ")}`
-    message += `\n  handler names: ${handlerNames.join(" ")}`
+    if (missingHandlerNames.length !== 0)
+      message += `\n  missing handler names: ${(missingHandlerNames).join(" ")}`
+    if (missingSpecNames.length !== 0)
+      message += `\n  missing spec names: ${(missingSpecNames).join(" ")}`
     console.log(message)
     process.exit(1)
   }
