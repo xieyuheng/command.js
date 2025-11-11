@@ -5,7 +5,7 @@ import { matchPattern } from "./matchPattern.ts"
 import { parsePattern } from "./parsePattern.ts"
 import { type Pattern } from "./Pattern.ts"
 
-export type CommandHandlers = Record<
+export type Handlers = Record<
   string,
   (
     args: Array<string>,
@@ -14,20 +14,20 @@ export type CommandHandlers = Record<
   ) => MaybePromise<void>
 >
 
-export class CommandRouter {
+export class Router {
   name: string
   version: string
 
   specs: Record<string, string> = {}
   patterns: Record<string, Pattern> = {}
-  handlers: CommandHandlers = {}
+  handlers: Handlers = {}
 
   constructor(name: string, version: string) {
     this.name = name
     this.version = version
   }
 
-  bind(specs: Record<string, string>, handlers: CommandHandlers): void {
+  bind(specs: Record<string, string>, handlers: Handlers): void {
     checkHandlers(specs, handlers)
 
     this.specs = { ...this.specs, ...specs }
@@ -70,7 +70,7 @@ export class CommandRouter {
 
 function checkHandlers(
   specs: Record<string, string>,
-  handlers: CommandHandlers,
+  handlers: Handlers,
 ): void {
   const specNames = Object.keys(specs)
   const handlerNames = Object.keys(handlers)
@@ -81,7 +81,7 @@ function checkHandlers(
     setDifference(new Set(handlerNames), new Set(specNames)),
   )
   if (missingHandlerNames.length !== 0 || missingSpecNames.length !== 0) {
-    let message = `[CommandRouter.bind] handler mismatch`
+    let message = `[Router.bind] handler mismatch`
     if (missingHandlerNames.length !== 0)
       message += `\n  missing handler names: ${missingHandlerNames.join(" ")}`
     if (missingSpecNames.length !== 0)

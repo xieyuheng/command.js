@@ -10,7 +10,7 @@ export function matchPattern(
   for (const argName of pattern.argNames) {
     const token = tokens.shift()
     if (token === undefined) {
-      let message = `[CommandRouter] ${pattern.spec}`
+      let message = `[Router] ${pattern.spec}`
       message += `\n  input tokens: ${inputTokens.join(" ")}`
       message += `\n  missing argument: ${argName}`
       console.log(message)

@@ -1,6 +1,6 @@
-import { CommandRouter } from "./index.ts"
+import { Router } from "./index.ts"
 
-const router = new CommandRouter("calculator", "0.1.0")
+const router = new Router("calculator", "0.1.0")
 
 const routes = {
   add: "x y -- add two numbers",
