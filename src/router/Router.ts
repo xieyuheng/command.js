@@ -52,7 +52,7 @@ export class Router {
       process.exit(1)
     }
 
-    await applyHandler(handler, args, options, tokens)
+    await applyHandler(handler)(args, options, tokens)
   }
 
   printNameAndVersion() {
