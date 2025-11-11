@@ -25,7 +25,6 @@ export class Router {
   ): void {
     const specs = createRoutes(input)
 
-    checkHandlers(specs, handlers)
 
     this.specs = { ...this.specs, ...specs }
     const patterns = recordMapValue(specs, parsePattern)
@@ -62,28 +61,5 @@ export class Router {
     console.log(`commands:`)
     for (const [name, spec] of Object.entries(this.specs))
       console.log(`  ${name} ${spec}`)
-  }
-}
-
-function checkHandlers(
-  specs: Record<string, string>,
-  handlers: Handlers,
-): void {
-  const specNames = Object.keys(specs)
-  const handlerNames = Object.keys(handlers)
-  const missingHandlerNames = Array.from(
-    setDifference(new Set(specNames), new Set(handlerNames)),
-  )
-  const missingSpecNames = Array.from(
-    setDifference(new Set(handlerNames), new Set(specNames)),
-  )
-  if (missingHandlerNames.length !== 0 || missingSpecNames.length !== 0) {
-    let message = `[Router.bind] handler mismatch`
-    if (missingHandlerNames.length !== 0)
-      message += `\n  missing handler names: ${missingHandlerNames.join(" ")}`
-    if (missingSpecNames.length !== 0)
-      message += `\n  missing spec names: ${missingSpecNames.join(" ")}`
-    console.log(message)
-    process.exit(1)
   }
 }
