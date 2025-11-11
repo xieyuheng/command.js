@@ -1,1 +1,1 @@
-routes can be array
+`createRoutes` -- so that `routes` can be array
