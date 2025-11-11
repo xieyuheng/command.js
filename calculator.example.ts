@@ -13,8 +13,8 @@ const router = Cmd.createRouter("calculator", "0.1.0", {
 })
 
 router.defineRoutes([
-  "add x y -- add two numbers (secretly double them) and print the result",
-  "mul --x --y -- mul two numbers and print the result",
+  "add x y -- secretly double the args",
+  "mul --x --y",
 ])
 
 function doubleArgs(): Cmd.Middleware {

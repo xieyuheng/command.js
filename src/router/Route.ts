@@ -6,9 +6,7 @@ export type Route = {
 }
 
 export function parseRoute(command: string): Route {
-  command = command.split(" -- ")[0]
-
-  const [name, ...words] = command.split(" ")
+  const [name, ...words] = command.split(" -- ")[0].split(" ")
 
   const argNames: Array<string> = []
   const optionNames: Array<string> = []

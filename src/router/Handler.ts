@@ -2,6 +2,9 @@ import type { MaybePromise } from "../helpers/promise/index.ts"
 import type { Context } from "./Context.ts"
 import { applyMiddleware, type Middleware } from "./Middleware.ts"
 
+export type HandlerArgs = Array<any>
+export type HandlerOptions = Record<string, any>
+
 export type Handlers = Record<string, Handler>
 
 export type Handler = HandlerFunction | HandlerObject
@@ -12,8 +15,8 @@ export type HandlerObject = {
 }
 
 export type HandlerFunction = (
-  args: Array<string>,
-  options: Record<string, string>,
+  args: HandlerArgs,
+  options: HandlerOptions,
   context: Context,
 ) => MaybePromise<void>
 
