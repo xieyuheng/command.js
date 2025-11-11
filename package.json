@@ -1,5 +1,5 @@
 {
-  "name": "@xieyuheng/command-router.js",
+  "name": "@xieyuheng/command.js",
   "version": "0.1.10",
   "license": "GPL-3.0-or-later",
   "type": "module",
