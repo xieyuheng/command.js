@@ -1,9 +1,7 @@
-import type { MaybePromise } from "./helpers/promise/index.ts"
-import { recordMapValue } from "./helpers/record/recordMapValue.ts"
-import { setDifference } from "./helpers/set/setAlgebra.ts"
-import { matchPattern } from "./matchPattern.ts"
-import { parsePattern } from "./parsePattern.ts"
-import { type Pattern } from "./Pattern.ts"
+import type { MaybePromise } from "../helpers/promise/index.ts"
+import { recordMapValue } from "../helpers/record/recordMapValue.ts"
+import { setDifference } from "../helpers/set/setAlgebra.ts"
+import { matchPattern, parsePattern, type Pattern } from "../pattern/index.ts"
 
 export type Handlers = Record<
   string,

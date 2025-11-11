@@ -1,4 +1,4 @@
-import { Router } from "./index.ts"
+import { Router } from "../index.ts"
 
 const router = new Router("calculator", "0.1.0")
 
