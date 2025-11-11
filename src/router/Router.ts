@@ -1,8 +1,10 @@
 import { recordMapValue } from "../helpers/record/recordMapValue.ts"
 import { setDifference } from "../helpers/set/setAlgebra.ts"
-import { matchPattern, parsePattern, type Pattern } from "../pattern/index.ts"
 import { createRoutes } from "./createRoutes.ts"
 import { type Handlers } from "./Handler.ts"
+import { matchPattern } from "./matchPattern.ts"
+import { parsePattern } from "./parsePattern.ts"
+import type { Pattern } from "./Pattern.ts"
 
 export class Router {
   name: string
