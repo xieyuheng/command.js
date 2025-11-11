@@ -2,6 +2,7 @@ import type { MaybePromise } from "../helpers/promise/index.ts"
 import { recordMapValue } from "../helpers/record/recordMapValue.ts"
 import { setDifference } from "../helpers/set/setAlgebra.ts"
 import { matchPattern, parsePattern, type Pattern } from "../pattern/index.ts"
+import { createRoutes } from "./createRoutes.ts"
 
 export type Handlers = Record<
   string,
@@ -25,7 +26,12 @@ export class Router {
     this.version = version
   }
 
-  bind(specs: Record<string, string>, handlers: Handlers): void {
+  bind(
+    input: Record<string, string> | Array<string>,
+    handlers: Handlers,
+  ): void {
+    const specs = createRoutes(input)
+
     checkHandlers(specs, handlers)
 
     this.specs = { ...this.specs, ...specs }

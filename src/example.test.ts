@@ -2,10 +2,10 @@ import * as cmd from "./index.ts"
 
 const router = cmd.createRouter("calculator", "0.1.0")
 
-const routes = {
-  add: "x y -- add two numbers",
-  mul: "--x --y -- mul two numbers",
-}
+const routes = [
+  "add x y -- add two numbers and print the result",
+  "mul --x --y -- mul two numbers and print the result",
+]
 
 router.bind(routes, {
   add: ([x, y]) => {
